@@ -33,3 +33,5 @@ mysqlConnection.query(
         }
     }
 );
+
+module.exports = mysqlConnection;

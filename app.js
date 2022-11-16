@@ -1,4 +1,9 @@
+const express = require("express");
+const cors = require("cors");
+const app = express();
+require('dotenv');
 const mysqlConnection = require("./igspots");
+const port = 3000;
 
 app.get('/igspots', (req, res) => {
     mysqlConnection.query(
@@ -12,3 +17,4 @@ app.get('/igspots', (req, res) => {
         }
     );
 })
+
