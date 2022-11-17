@@ -1,4 +1,5 @@
 const express = require('express');
+const port= 3000;
 const http = require('http');
 const mysql = require('mysql2');
 const cors = require('cors');
@@ -94,6 +95,6 @@ app.get('/images', (req, res) => {
     );
 })
 
-
-
-
+app.listen(port, () => {
+    console.log(`Node.js REST API listening at http://localhost:${port}`);
+});

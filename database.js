@@ -24,3 +24,4 @@ mysqlConnection.connect((err) => {
 });
 
 module.exports = mysqlConnection;
+
