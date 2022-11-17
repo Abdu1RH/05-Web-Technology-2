@@ -7,6 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const {response} = require("express");
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -108,11 +109,28 @@ app.get('/images', (req, res) => {
     );
 })
 
-app.listen(port, () => {
-    console.log(`Node.js REST API listening at http://localhost:${port}`);
-});
 
 
 
+app.get("/users/:id",(req, res) => {
+    const query = "SELECT * FROM igspots.users WHERE user_id = ?;";
+    const id = req.params.id;
+    mysqlConnection.query(
+        query,
+        [id],
+        (err, results, fields) => {
+            if (!err) {
+                res.json(results);
+            } else {
+                console.log(err);
+            }
+
+        });
+}),
+
+
+    app.listen(port, () => {
+        console.log(`Node.js REST API listening at http://localhost:${port}`);
+    });
 module.exports = app;
 
