@@ -1,6 +1,7 @@
 // Importing the mysql2 library
 const mysql = require("mysql2");
 require('dotenv').config();
+console.log(process.env.host)
 
 // 1. Creating the connection
 const mysqlConnection = mysql.createConnection({
@@ -21,17 +22,5 @@ mysqlConnection.connect((err) => {
         console.log("Connection Failed");
     }
 });
-
-// 3. Sending a query to the database
-mysqlConnection.query(
-    "SELECT * FROM igspots.spots;",
-    (err, results, fields) => {
-        if (!err) {
-            console.log(results);
-        } else {
-            console.log(err);
-        }
-    }
-);
 
 module.exports = mysqlConnection;
