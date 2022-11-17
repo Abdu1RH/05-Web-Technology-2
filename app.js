@@ -14,6 +14,19 @@ app.use(cors({
     origin: '*'
 }));
 
+const mysqlConnection= require("./database")
+console.log(mysqlConnection)
+
+
+const cors_url = process.env.NODE_ENV === "prod" ? URL_FOR_FRONTEND : "*";
+app.use(
+    cors({
+        origin: cors_url
+    })
+);
+
+
+
 app.get('/users', (req, res) => {
     mysqlConnection.query(
         "SELECT * FROM users;",
@@ -98,3 +111,8 @@ app.get('/images', (req, res) => {
 app.listen(port, () => {
     console.log(`Node.js REST API listening at http://localhost:${port}`);
 });
+
+
+
+module.exports = app;
+
