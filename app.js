@@ -128,6 +128,29 @@ app.get("/users/:id",(req, res) => {
         });
 }),
 
+    app.post('/spot/create', (req, res,) => {
+        const query = "INSERT VALUES TO igspots.spots = ?;";
+        const spots = req.params.spots;
+        console.log(spots)
+        const users = req.params.users;
+        console.log(users)
+        res.sendStatus(200);
+        mysqlConnection.query(
+            query,
+            [spots,users],
+            (err, results, fields) => {
+                if (!err) {
+                    res.json(results);
+                } else {
+                    console.log(err);
+                }
+
+            });
+    });
+
+
+
+
 
     app.listen(port, () => {
         console.log(`Node.js REST API listening at http://localhost:${port}`);
