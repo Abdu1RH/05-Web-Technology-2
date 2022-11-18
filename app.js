@@ -16,8 +16,6 @@ app.use(cors({
 }));
 
 const mysqlConnection= require("./database")
-console.log(mysqlConnection)
-
 
 const cors_url = process.env.NODE_ENV === "prod" ? URL_FOR_FRONTEND : "*";
 app.use(
