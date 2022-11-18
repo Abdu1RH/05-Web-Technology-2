@@ -1,7 +1,13 @@
 // Importing the mysql2 library
 const mysql = require("mysql2");
 require('dotenv').config();
-console.log(process.env.host)
+
+console.log("******************** STARTING HERE")
+console.log(process.env.HOST)
+console.log(process.env.PORT)
+console.log(process.env.DATABASE)
+console.log(process.env.MYSQL_USER)
+
 
 // 1. Creating the connection
 const mysqlConnection = mysql.createConnection({
