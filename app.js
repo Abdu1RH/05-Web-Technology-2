@@ -27,6 +27,9 @@ app.use(
 );
 
 
+app.get('/', (req, res) => {
+    res.send("Welcome to the database!")
+});
 
 app.get('/users', (req, res) => {
     mysqlConnection.query(
@@ -180,10 +183,8 @@ app.post('/spots/create', (req, res,) => {
 
 
     app.listen(port, () => {
-        console.log(`Node.js REST API listening at http://localhost:${port}`);
+        console.log("Listening on port http://localhost:${port}");
     });
 
     module.exports = app;
-
-
 
