@@ -187,7 +187,7 @@ app.get("/users/:id",(req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Node.js REST API listening at http://localhost:${port}`);
+    console.log(`Server started on port at http://localhost:${port}`);
 });
 module.exports = app;
 
