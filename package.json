@@ -1,12 +1,21 @@
 {
+  "name": "igspots_db",
+  "version": "0.0.0",
+  "private": "true",
+  "scripts": {
+    "start": "node ./app.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
+    "debug": "2.6.9",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2",
+    "express": "^4.16.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "response": "^0.18.0",
     "save": "^2.9.0",
-    "server": "^1.0.37"
-  }
+    "server": "^1.0.37",
+    "nodemon": "2.0.19"
+  },
+  "packageManager": "yarn@3.2.3"
 }
