@@ -182,9 +182,17 @@ app.post('/spots/create', (req, res,) => {
 
 
 
-    app.listen(port, () => {
-        console.log("Listening on port http://localhost:${port}");
-    });
+app.listen(port, () => {
+    console.log(`Node.js REST API listening at http://localhost:${port}`);
+});
+module.exports = app;
 
-    module.exports = app;
 
+
+
+/*
+server.listen(3000,(port) => {
+    console.log('Listening on port ' + server.address().port);
+});
+module.exports = app;
+ */
