@@ -131,49 +131,53 @@ app.get("/users/:id",(req, res) => {
         });
 }),
 
-    app.post('/users/create', (req, res,) => {
-        const userId = req.body.user_id
-        const userName = req.body.user_name
-        const Email = req.body.email
-        const userPassword= req.body.user_password
-        console.log(userId,userName,Email,userPassword)
 
-        const query = "INSERT INTO users (user_id, user_name, email, user_password) VALUES (?,?,?,?);";
-        mysqlConnection.query(
-            query,
-            [userId,userName,Email,userPassword],
-            (err, results, fields) => {
-                if (!err) {
-                    res.json(results);
-                } else {
-                    console.log(err);
-                }
+        app.post('/users/create', (req, res,) => {
+            const userId = req.body.user_id
+            const userName = req.body.user_name
+            const Email = req.body.email
+            const userPassword= req.body.user_password
+            console.log(userId,userName,Email,userPassword)
 
-            });
-    });
-/*
-app.post('/spots/create', (req, res,) => {
-    const spotId = req.body.spot_id
-    const locationName = req.body.location_name
-    const Address = req.body.address
-    const Longitude= req.body.longitude
-    const Latitude=req.body.latitude
-    console.log(spotId,locationName,Address,Longitude,Latitude)
+            const query = "INSERT INTO users (user_id, user_name, email, user_password) VALUES (?,?,?,?);";
+            mysqlConnection.query(
+                query,
+                [userId,userName,Email,userPassword],
+                (err, results, fields) => {
+                    if (!err) {
+                        res.json(results);
+                    } else {
+                        console.log(err);
+                    }
 
-    const query = "INSERT INTO spots (spot_id, location_name, address, longitude,latitude) VALUES (?,?,?,?,?);";
-    mysqlConnection.query(
-        query,
-        [spot_id, location_name, address, longitude,latitude],
-        (err, results, fields) => {
-            if (!err) {
-                res.json(results);
-            } else {
-                console.log(err);
-            }
-
+                });
         });
-});
- */
+
+
+
+    /*
+      app.post('/spots/create', (req, res,) => {
+          const spotId = req.body.spot_id
+          const locationName = req.body.location_name
+          const Address = req.body.address
+          const Longitude= req.body.longitude
+          const Latitude=req.body.latitude
+          console.log(spotId,locationName,Address,Longitude,Latitude)
+
+          const query = "INSERT INTO spots (spot_id, location_name, address, longitude,latitude) VALUES (?,?,?,?,?);";
+          mysqlConnection.query(
+              query,
+              [spot_id, location_name, address, longitude,latitude],
+              (err, results, fields) => {
+                  if (!err) {
+                      res.json(results);
+                  } else {
+                      console.log(err);
+                  }
+
+              });
+      });
+  */
 
 
 
@@ -189,10 +193,3 @@ module.exports = app;
 
 
 
-
-/*
-server.listen(3000,(port) => {
-    console.log('Listening on port ' + server.address().port);
-});
-module.exports = app;
- */
