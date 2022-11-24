@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 });
 app.get('/spots', (req, res) => {
     mysqlConnection.query(
-        "SELECT * FROM spots;",
+        "SELECT spots.spot_id, spots.location_name, spots.address, spots.season, spot_image.img_link FROM spots INNER JOIN spot_image ON spots.spot_id = spot_image.spot_id;",
         (err, results, fields) => {
             if (!err) {
                 res.json(results);
@@ -117,10 +117,6 @@ app.get("/spots/:id",(req, res) => {
 })
 
 
-
-
-
-
         app.post('/spots/create', (req, res,) => {
             const spotId = req.body.spot_id
             const locationName = req.body.location_name
@@ -141,6 +137,11 @@ app.get("/spots/:id",(req, res) => {
 
                 });
         });
+
+
+
+
+
 
 
 
