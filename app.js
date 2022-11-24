@@ -28,6 +28,20 @@ app.use(
 app.get('/', (req, res) => {
     res.send("Welcome to the database!")
 });
+app.get('/spots', (req, res) => {
+    mysqlConnection.query(
+        "SELECT * FROM spots;",
+        (err, results, fields) => {
+            if (!err) {
+                res.json(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+})
+
+
 
 app.get('/users', (req, res) => {
     mysqlConnection.query(
@@ -42,59 +56,6 @@ app.get('/users', (req, res) => {
     );
 })
 
-app.get('/spots', (req, res) => {
-    mysqlConnection.query(
-        "SELECT * FROM spots;",
-        (err, results, fields) => {
-            if (!err) {
-                res.json(results);
-            } else {
-                console.log(err);
-            }
-        }
-    );
-})
-
-app.get('/spot_img', (req, res) => {
-    mysqlConnection.query(
-        "SELECT * FROM spot_img;",
-        (err, results, fields) => {
-            if (!err) {
-                res.json(results);
-            } else {
-                console.log(err);
-            }
-        }
-    );
-})
-
-
-app.get('/user_rating', (req, res) => {
-    mysqlConnection.query(
-        "SELECT * FROM user_rating;",
-        (err, results, fields) => {
-            if (!err) {
-                res.json(results);
-            } else {
-                console.log(err);
-            }
-        }
-    );
-})
-
-
-app.get('/rating', (req, res) => {
-    mysqlConnection.query(
-        "SELECT * FROM rating;",
-        (err, results, fields) => {
-            if (!err) {
-                res.json(results);
-            } else {
-                console.log(err);
-            }
-        }
-    );
-})
 
 
 app.get('/images', (req, res) => {
@@ -111,10 +72,36 @@ app.get('/images', (req, res) => {
 })
 
 
+app.get('/spot_image', (req, res) => {
+    mysqlConnection.query(
+        "SELECT * FROM spot_image;",
+        (err, results, fields) => {
+            if (!err) {
+                res.json(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+})
 
 
-app.get("/users/:id",(req, res) => {
-    const query = "SELECT * FROM igspots.users WHERE user_id = ?;";
+app.get('/user_spot', (req, res) => {
+    mysqlConnection.query(
+        "SELECT * FROM user_spot;",
+        (err, results, fields) => {
+            if (!err) {
+                res.json(results);
+            } else {
+                console.log(err);
+            }
+        }
+    );
+})
+
+
+app.get("/spots/:id",(req, res) => {
+    const query = "SELECT * FROM igspot_db.spots WHERE spot_id = ?;";
     const id = req.params.id;
     mysqlConnection.query(
         query,
@@ -127,20 +114,24 @@ app.get("/users/:id",(req, res) => {
             }
 
         });
-}),
+})
 
 
-        app.post('/users/create', (req, res,) => {
-            const userId = req.body.user_id
-            const userName = req.body.user_name
-            const Email = req.body.email
-            const userPassword= req.body.user_password
-            console.log(userId,userName,Email,userPassword)
 
-            const query = "INSERT INTO users (user_id, user_name, email, user_password) VALUES (?,?,?,?);";
+
+
+
+        app.post('/spots/create', (req, res,) => {
+            const spotId = req.body.spot_id
+            const locationName = req.body.location_name
+            const Address = req.body.address
+            const season= req.body.season
+            console.log(spotId,locationName,Address,season)
+
+            const query = "INSERT INTO spots (spot_id, location_name, address, season) VALUES (?,?,?,?);";
             mysqlConnection.query(
                 query,
-                [userId,userName,Email,userPassword],
+                [spotId,locationName,Address,season],
                 (err, results, fields) => {
                     if (!err) {
                         res.json(results);
