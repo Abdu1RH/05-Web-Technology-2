@@ -89,7 +89,7 @@ app.get('/spot_image', (req, res) => {
 
 app.get('/user_spot', (req, res) => {
     mysqlConnection.query(
-        "SELECT user_spot.spot_id, user_spot.location_name, user_spot.user_name, user_spot.user_mail FROM user_spot INNER JOIN spot_image ON user_spot.spot_id = spot_image.spot_id;",
+        "SELECT user_spot.spot_id, user_spot.location_name, user_spot.user_name, user_spot.user_mail, spot_image.img_link FROM user_spot INNER JOIN spot_image ON user_spot.spot_id = spot_image.spot_id;",
         (err, results, fields) => {
             if (!err) {
                 res.json(results);
