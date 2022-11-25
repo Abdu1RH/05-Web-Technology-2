@@ -138,6 +138,7 @@ app.get("/spots/:id",(req, res) => {
         });
 
 
+
 app.listen(port, () => {
     console.log(`Server started on port at http://localhost:${port}`);
 });
