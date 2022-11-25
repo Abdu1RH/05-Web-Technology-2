@@ -117,17 +117,15 @@ app.get("/spots/:id",(req, res) => {
 })
 
 
-        app.post('/spots/create', (req, res,) => {
-            const spotId = req.body.spot_id
-            const locationName = req.body.location_name
-            const Address = req.body.address
-            const season= req.body.season
-            console.log(spotId,locationName,Address,season)
+        app.post('/images/create', (req, res,) => {
+            const img_Id = req.body.img_id
+            const img_link = req.body.img_link
+           console.log(img_Id,img_link)
 
-            const query = "INSERT INTO spots (spot_id, location_name, address, season) VALUES (?,?,?,?);";
+            const query = "INSERT INTO images (img_id, img_link) VALUES (?,?);";
             mysqlConnection.query(
                 query,
-                [spotId,locationName,Address,season],
+                [img_Id,img_link],
                 (err, results, fields) => {
                     if (!err) {
                         res.json(results);
@@ -137,43 +135,6 @@ app.get("/spots/:id",(req, res) => {
 
                 });
         });
-
-
-
-
-
-
-
-
-    /*
-      app.post('/spots/create', (req, res,) => {
-          const spotId = req.body.spot_id
-          const locationName = req.body.location_name
-          const Address = req.body.address
-          const Longitude= req.body.longitude
-          const Latitude=req.body.latitude
-          console.log(spotId,locationName,Address,Longitude,Latitude)
-
-          const query = "INSERT INTO spots (spot_id, location_name, address, longitude,latitude) VALUES (?,?,?,?,?);";
-          mysqlConnection.query(
-              query,
-              [spot_id, location_name, address, longitude,latitude],
-              (err, results, fields) => {
-                  if (!err) {
-                      res.json(results);
-                  } else {
-                      console.log(err);
-                  }
-
-              });
-      });
-  */
-
-
-
-
-
-
 
 
 app.listen(port, () => {
